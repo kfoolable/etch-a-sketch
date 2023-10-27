@@ -1,5 +1,4 @@
 * {
-  background-color: pink;
   box-sizing: border-box;
 }
 
@@ -11,6 +10,7 @@ body {
 }
 
 body {
+  background-color: pink;
   display: flex;
   flex-direction: column;
 }
@@ -37,7 +37,13 @@ h1 {
   gap: 20px;
 }
 
+input {
+  width: 50px;
+  margin-left: 10px;
+}
+
 .drawing-container {
+  background-color: honeydew;
   border-width: 1px 1px 1px 0;
   border-style: solid;
   border-color: black;

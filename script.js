@@ -2,6 +2,10 @@ const gridSizeInput = document.querySelector("input.grid-size");
 const sketchPad = document.querySelector("div.drawing-container");
 
 const clearBtn = document.querySelector("button.clear-btn");
+const rainbowBtn = document.querySelector("button.rainbow");
+const darkerBtn = document.querySelector("button.darker");
+
+let isRainbowMode = false;
 
 function gridCalc() {
   while (sketchPad.firstChild) {
@@ -24,7 +28,11 @@ function gridCalc() {
       sketchPad.appendChild(squares);
 
       squares.addEventListener("mouseenter", () => {
-        squares.style.backgroundColor = "black";
+        if (isRainbowMode) {
+          squares.style.backgroundColor = getRandomColor();
+        } else {
+          squares.style.backgroundColor = "black";
+        }
       });
     }
   } else {
@@ -49,3 +57,15 @@ gridSizeInput.addEventListener("input", () => {
 clearBtn.addEventListener("click", () => {
   clearSketchPad();
 });
+
+rainbowBtn.addEventListener("click", () => {
+  isRainbowMode = true;
+  gridCalc();
+});
+
+function getRandomColor() {
+  const randomR = Math.floor(Math.random() * 256);
+  const randomG = Math.floor(Math.random() * 256);
+  const randomB = Math.floor(Math.random() * 256);
+  return `rgb(${randomR},${randomG},${randomB})`;
+}
