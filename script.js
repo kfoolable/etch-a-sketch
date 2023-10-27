@@ -20,6 +20,7 @@ function gridCalc() {
     for (let i = 0; i < gridSizeValue ** 2; i++) {
       const squares = document.createElement("div");
       squares.style.border = "1px solid grey";
+
       sketchPad.appendChild(squares);
 
       squares.addEventListener("mouseenter", () => {
