@@ -1,0 +1,46 @@
+* {
+  background-color: pink;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+}
+
+.main-container {
+  display: flex;
+  flex: 1;
+  margin: 0;
+  justify-content: center;
+}
+
+.controls-container {
+  border: 1px solid black;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}
+
+.drawing-container {
+  border: 1px solid blue;
+  width: 960px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  text-align: center;
+}
