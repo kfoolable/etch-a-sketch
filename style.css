@@ -29,6 +29,7 @@ h1 {
 .controls-container {
   border: 1px solid black;
   width: 400px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -36,11 +37,13 @@ h1 {
 }
 
 .drawing-container {
-  border: 1px solid blue;
-  width: 960px;
+  border-width: 1px 1px 1px 0;
+  border-style: solid;
+  border-color: black;
+  width: 600px;
+  height: 600px;
 
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto;
-  text-align: center;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
 }
