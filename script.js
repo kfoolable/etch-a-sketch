@@ -122,9 +122,9 @@ function darkerMode() {
 
   const step = 0.1;
 
+  //returns a function that adds a value from 0.1 - 0.9 everytime the mouse hovers over a single square
   return function () {
     finalRgbOpacity += step;
-
     if (finalRgbOpacity > 0.9) {
       finalRgbOpacity = 0.9;
     }
