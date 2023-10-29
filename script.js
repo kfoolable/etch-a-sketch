@@ -2,10 +2,14 @@ const gridSizeInput = document.querySelector("input.grid-size");
 const sketchPad = document.querySelector("div.drawing-container");
 
 const clearBtn = document.querySelector("button.clear-btn");
+
+const blackBtn = document.querySelector("button.black");
 const rainbowBtn = document.querySelector("button.rainbow");
 const darkerBtn = document.querySelector("button.darker");
 
+let isBlackMode = true;
 let isRainbowMode = false;
+let isDarkerMode = false;
 
 function gridCalc() {
   while (sketchPad.firstChild) {
@@ -30,8 +34,10 @@ function gridCalc() {
       squares.addEventListener("mouseenter", () => {
         if (isRainbowMode) {
           squares.style.backgroundColor = getRandomColor();
-        } else {
+        } else if (isBlackMode) {
           squares.style.backgroundColor = "black";
+        } else if (isDarkerMode) {
+          squares.style.backgroundColor = getDarkerColor();
         }
       });
     }
@@ -45,6 +51,8 @@ function clearSketchPad() {
   gridCells.forEach((cell) => {
     cell.style.backgroundColor = "";
   });
+
+  finalRgbOpacity = 0.1;
 }
 
 gridSizeInput.value = "4";
@@ -58,8 +66,28 @@ clearBtn.addEventListener("click", () => {
   clearSketchPad();
 });
 
+blackBtn.addEventListener("click", () => {
+  if (!isBlackMode) {
+    //false
+    isBlackMode = true;
+    isRainbowMode = false;
+    isDarkerMode = false;
+    gridCalc();
+  }
+});
+
 rainbowBtn.addEventListener("click", () => {
   isRainbowMode = true;
+  isBlackMode = false;
+  isDarkerMode = false;
+  gridCalc();
+});
+
+darkerBtn.addEventListener("click", () => {
+  clearSketchPad();
+  isDarkerMode = true;
+  isRainbowMode = false;
+  isBlackMode = false;
   gridCalc();
 });
 
@@ -68,4 +96,39 @@ function getRandomColor() {
   const randomG = Math.floor(Math.random() * 256);
   const randomB = Math.floor(Math.random() * 256);
   return `rgb(${randomR},${randomG},${randomB})`;
+}
+
+/*function darkerMode() {
+  const colorR = 255;
+  const colorG = 0;
+  const colorB = 0;
+
+  let finalRgbOpacity = 0;
+  for (let i = 1; i <= 9; i++) {
+    finalRgbOpacity = i * 0.1;
+  }
+
+  return `rgb(${colorR}, ${colorG}, ${colorB}, ${finalRgbOpacity})`;
+}*/
+
+let finalRgbOpacity = 0;
+
+const getDarkerColor = darkerMode();
+
+function darkerMode() {
+  const colorR = 255;
+  const colorG = 0;
+  const colorB = 0;
+
+  const step = 0.1;
+
+  return function () {
+    finalRgbOpacity += step;
+
+    if (finalRgbOpacity > 0.9) {
+      finalRgbOpacity = 0.9;
+    }
+
+    return `rgb(${colorR}, ${colorG}, ${colorB}, ${finalRgbOpacity})`;
+  };
 }
