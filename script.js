@@ -98,6 +98,7 @@ function getRandomColor() {
   return `rgb(${randomR},${randomG},${randomB})`;
 }
 
+//this function doesn't darken each interaction with the squares but returns a single value which is 0.9
 /*function darkerMode() {
   const colorR = 255;
   const colorG = 0;
@@ -122,11 +123,11 @@ function darkerMode() {
 
   const step = 0.1;
 
-  //returns a function that adds a value from 0.1 - 0.9 everytime the mouse hovers over a single square
+  //returns a function that adds a value from 0.1 to 0.9 everytime the mouse hovers over a single square
   return function () {
     finalRgbOpacity += step;
     if (finalRgbOpacity > 0.9) {
-      finalRgbOpacity = 0.9;
+      finalRgbOpacity = 0.1;
     }
 
     return `rgb(${colorR}, ${colorG}, ${colorB}, ${finalRgbOpacity})`;
