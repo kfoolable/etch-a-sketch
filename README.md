@@ -1,2 +1,5 @@
-# etch-a-sketch project for The Odin Project
-https://kfoolable.github.io/etch-a-sketch/
+# etch-a-sketch
+
+## Another Odin Activity
+
+Live Demo: https://kfoolable.github.io/etch-a-sketch/
